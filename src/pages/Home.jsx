@@ -1,20 +1,24 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import Header from '../Components/Header'
+import Footer from '../Components/Footer';
+import AboutUs from '../Components/AboutUs';
+import HomeFeatures from '../Components/HomeFeatures';
+import StudentFeedback from '../Components/StudentFeedback';
+import Hero from '../Components/Hero';
+
+
 
 function Home() {
 
-    const navigate=useNavigate()
-    function UserLogin(){
-        navigate('/admin-login')
-    }
-
-
   return (
     <>
-    <Header/>
-    
-    <button onClick={UserLogin} >UserLogin</button>
+      
+      <Header />
+      <Hero/>
+      <AboutUs/>
+      <HomeFeatures/>
+      <StudentFeedback/>
+      <Footer/>
     </>
   )
 }
