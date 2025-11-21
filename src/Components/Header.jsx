@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function Header() {
 
 
@@ -32,16 +33,16 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-3">
             <li className="nav-item">
-              <a className="nav-link fw-semibold" href="#">Home</a>
+              <a className="nav-link fw-semibold" href="#hero">Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link fw-semibold" href="#">About Us</a>
+              <a className="nav-link fw-semibold" href="#about">About Us</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link fw-semibold" href="features">features</a>
+              <a className="nav-link fw-semibold" href="#features">features</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link fw-semibold" href="#">Student Feedback</a>
+              <a className="nav-link fw-semibold" href="#feedback">Student Feedback</a>
             </li>
 
           </ul>

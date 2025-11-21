@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function StudentFeedback() {
   return (
-    <section className="py-5 bg-light">
+    <section id="feedback" className="py-5 bg-light">
       <div className="container">
         <div className="row align-items-center">
 

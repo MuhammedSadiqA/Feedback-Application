@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="w-100 py-5 bg-dark">
+    <section id="hero" className="w-100 py-5 bg-dark">
       <div className="container-fluid">
 
         <div className="row align-items-center">

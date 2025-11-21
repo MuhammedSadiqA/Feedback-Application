@@ -2,7 +2,7 @@ import React from 'react'
 
 function AboutUs() {
     return (
-        <div className="container py-5">
+        <div id="about" className="container py-5">
             <div className="row align-items-center">
 
                 {/* Left: Image */}
