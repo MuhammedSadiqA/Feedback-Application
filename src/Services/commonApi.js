@@ -1,9 +1,14 @@
-import axios from "axios";
+ import axios from "axios"
 
-const commonApi = axios.create({
-  baseURL: "http://localhost:3000"
-});
-console.log(commonApi);
+ const commonAPI =async(url,httpMethod,reqBody)=>{
+        const requestConfig={
+            url,
+            method:httpMethod,
+            data:reqBody
+        }
 
+       return await axios(requestConfig).then(res=>res).catch(err=>err)
 
-export default commonApi;
+}
+
+export default commonAPI;

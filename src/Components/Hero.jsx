@@ -34,7 +34,7 @@ export default function Hero() {
 
               {/* TEXT */}
               <div>
-                <h2 className="fw-bold mb-2">Rahul M Mohanakumar</h2>
+                <h2 className="fw-bold mb-2">Rahul Mohanakumar</h2>
                 <p className="text-muted">
                   A visionary leader who built Luminar Technolab into one of
                   Kerala’s most trusted IT training institutes. With his deep

@@ -6,7 +6,7 @@ export default function StudentFeedback() {
       <div className="container">
         <div className="row align-items-center">
 
-          {/* LEFT SIDE TEXT */}
+          {/* Left side Text*/}
           <div className="col-md-6">
             <h2 className="fw-bold mb-3">
               Share Your Feedback & Improve Our Learning Space
@@ -19,7 +19,7 @@ export default function StudentFeedback() {
 
             {/* Buttons */}
             <div className="d-flex gap-3">
-              <Link to="/feedback" className="btn btn-primary btn-lg">
+              <Link to="/give-feedback" className="btn btn-primary btn-lg">
                 Give Feedback
               </Link>
 
@@ -29,7 +29,7 @@ export default function StudentFeedback() {
             </div>
           </div>
 
-          {/* RIGHT SIDE IMAGE */}
+          {/* Right side image */}
           <div className="col-md-6 mt-4 mt-md-0">
             <img
               src="https://images.unsplash.com/photo-1529070538774-1843cb3265df"
