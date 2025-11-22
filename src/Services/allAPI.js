@@ -12,7 +12,7 @@ export const getAllFeedbackAPI= async()=>{
 // Delete
 export const deleteFeedbackAPI=async(id)=>{
    return await commonAPI(`${ServerURL}/feedbacks/${id}`,"DELETE",null)
-   console.log("API CALLED:", `${ServerURL}/feedbacks/${id}`);
+   // console.log("API CALLED:", `${ServerURL}/feedbacks/${id}`);
 }
 // update
 export const updateFeedbackAPI = async (id, data) => {

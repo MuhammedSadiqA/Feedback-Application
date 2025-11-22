@@ -1,15 +1,20 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 function Header() {
-
+const navigate=useNavigate()
+  const userLogin=()=>{
+    
+    navigate('/admin-login')
+  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm py-3">
       <div className="container">
 
         {/* Logo + Company Name */}
-        <a className="navbar-brand d-flex align-items-center gap-2" href="#">
+        <a className="navbar-brand d-flex align-items-center gap-2" href="#hero">
           <img
             src="https://d3eqn3hw2x95rk.cloudfront.net/seo/og_images/logo_qZlpEoR.png"
             width="40"
@@ -44,6 +49,8 @@ function Header() {
             <li className="nav-item">
               <a className="nav-link fw-semibold" href="#feedback">Student Feedback</a>
             </li>
+
+            <button className='btn btn-outline-primary' onClick={userLogin}>Admin Login</button>
 
           </ul>
         </div>

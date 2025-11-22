@@ -3,13 +3,16 @@ import { getAllFeedbackAPI, deleteFeedbackAPI, updateFeedbackAPI } from '../Serv
 // sweetalert Library for better alert messages
 import Swal from 'sweetalert2'
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { Edit } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+// import { Edit } from 'lucide-react';
 
 function ViewFeedback() {
 
   const [feedbackList, setFeedbackList] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [editData, setEditData] = useState(null)
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  const navigate=useNavigate()
 
   const handleEdit = (item) => {
     setShowModal(true)
@@ -35,7 +38,7 @@ function ViewFeedback() {
   // Delete Function
   const handleDelete = async (id) => {
 
-    console.log("Deleting ID:", id);
+    // console.log("Deleting ID:", id);
 
     const response = await deleteFeedbackAPI(id);
 
@@ -49,13 +52,15 @@ function ViewFeedback() {
   };
 
 
+
+
   // Fetch Feedback
 
   const fetchFeedback = async () => {
     const response = await getAllFeedbackAPI()
     // console.log(response.status);
     if (response.status === 200) {
-      // console.log(response.status);
+      console.log("Response is ", response.status);
       setFeedbackList(response.data)
     } else {
       Swal.fire({
@@ -66,30 +71,53 @@ function ViewFeedback() {
     }
   }
 
+  // get user Data from local storage stored from feedback page to edit
+  const currentUser=localStorage.getItem("currentUser")
 
 
 
 
   return (
     <div className="container my-4">
+      {isAdmin && (
+        <button
+          className="btn btn-danger mb-3"
+          onClick={() => {
+            localStorage.removeItem("isAdmin");
+            Swal.fire("Logged Out", "Admin logged out successfully.", "success")
+            navigate('/')
+          }}
+        >
+          Logout
+        </button>
+      )}
+
       <h2 className="mb-3 fw-bold text-center">Students Feedback</h2>
+
+
 
       {feedbackList.length > 0 ?
         <div className="row">
-          {feedbackList.map((data) => (
+          {feedbackList?.map((data) => (
             <div className="col-md-4 mb-3" key={data.id}>
               <div className="card shadow-sm rounded-3 position-relative">
 
                 {/* Edit Icon */}
-                <i onClick={() => handleEdit(data)}
+          {
+            data.name ==currentUser&&
+                  <i onClick={() => handleEdit(data)}
                   className="bi bi-pencil-square text-warning fs-5 position-absolute top-0 end-0 m-3 me-5 cursor-pointer"
                 ></i>
+          }
 
                 {/* Delete Icon */}
-                <i
-                  onClick={() => handleDelete(data.id)}
-                  className="bi bi-trash text-danger fs-5 position-absolute top-0 end-0 m-3 cursor-pointer"
-                ></i>
+                {
+                  isAdmin &&
+                  <i
+                    onClick={() => handleDelete(data.id)}
+                    className="bi bi-trash text-danger fs-5 position-absolute top-0 end-0 m-3 cursor-pointer"
+                  ></i>
+                }
 
 
                 <div className="card-body">

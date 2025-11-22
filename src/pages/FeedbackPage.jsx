@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { addFeedbackAPI } from "../Services/allAPI";
+import { addFeedbackAPI, getAllFeedbackAPI, updateFeedbackAPI } from "../Services/allAPI";
 // sweetalert Library for better alert messages
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function AddFeedback() {
+
+  const navigate =useNavigate()
   const [formData, setFormData] = useState({
     name: "",
     course: "",
@@ -15,21 +20,52 @@ export default function AddFeedback() {
 
 
 
+  //submitting feedback if its done updating the feedback 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await addFeedbackAPI(formData)
-    // console.log(response.status); checking status to use conditional statement
-    if (response.status == 201 || response.status == 200) {
-      Swal.fire({
-        title: "Good job!",
-        text: "You successfully updated the feedback!",
-        icon: "success"
-      });
-      setFormData({ name: "", course: "", rating: "", message: "" })
+    if(!formData.name.trim() || !formData.course.trim() ||!formData.rating.trim() ||!formData.message.trim())
+      { Swal.fire({
+        icon:"warning",
+        title:"Fill all the fields so you can Submit the form",
+        text:"Please complete the form before submitting"
+      })
+      return
     }
 
+    const currentUser = formData.name;
+    localStorage.setItem("currentUser", currentUser);
+    // fetch all feedback 
+    const allData = await getAllFeedbackAPI()
+    const existing = allData.data.find(item => item.name == currentUser)
 
+    // checking if the user name is existing from localstorage and formData
+    if (existing) {
+      const updateResponse = await updateFeedbackAPI(existing.id, { ...formData, owner: currentUser })
+      // console.log(updateResponse);
+      if (updateResponse.status == 200) {
+        Swal.fire("Updated!", "Your previous feedback was replaced.", "success");
+        setFormData({ name: "", course: "", rating: "", message: "" });
+        navigate('/view-feedback')
+        return;
+
+      }
+    }
+
+   
+      const addresponse = await addFeedbackAPI({ ...formData, owner: currentUser })
+      // console.log(response.status); checking status to use conditional statement
+      if (addresponse.status == 201 || addresponse.status == 200) {
+        Swal.fire({
+          title: "Good job!",
+          text: "You successfully updated the feedback!",
+          icon: "success",
+        });
+        setFormData({ name: "", course: "", rating: "", message: "" })
+      }
+    
   }
+
+
 
   return (
     <div className="container py-5">

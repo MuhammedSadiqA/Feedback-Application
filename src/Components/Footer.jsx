@@ -43,7 +43,7 @@ export function Footer() {
           <div className="col-md-6 col-lg-3">
             <h6 className="text-white mb-3">Product</h6>
             <ul className="list-unstyled text-secondary small">
-              <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">Features</a></li>
+              <li><a className="text-secondary text-decoration-none d-block mb-2" href="#features">Features</a></li>
               <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">Pricing</a></li>
               <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">Case Studies</a></li>
               <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">Reviews</a></li>
@@ -55,7 +55,7 @@ export function Footer() {
           <div className="col-md-6 col-lg-3">
             <h6 className="text-white mb-3">Company</h6>
             <ul className="list-unstyled text-secondary small">
-              <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">About Us</a></li>
+              <li><a className="text-secondary text-decoration-none d-block mb-2" href="#about">About Us</a></li>
               <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">Careers</a></li>
               <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">Blog</a></li>
               <li><a className="text-secondary text-decoration-none d-block mb-2" href="#">Press</a></li>
@@ -69,15 +69,15 @@ export function Footer() {
             <ul className="list-unstyled small text-secondary">
               <li className="d-flex align-items-start gap-2 mb-2">
                 <Mail size={16} />
-                <span>info@luminartechnolab.com</span>
+                <span>luminartechnolab@gmail.com</span>
               </li>
               <li className="d-flex align-items-start gap-2 mb-2">
                 <Phone size={16} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 987 765 2891</span>
               </li>
               <li className="d-flex align-items-start gap-2">
                 <MapPin size={16} />
-                <span>123 Education Street, Tech City, TC 12345</span>
+                <span>Kerala Kochi , Kakkanad, Pincode 12345</span>
               </li>
             </ul>
           </div>
