@@ -10,8 +10,8 @@ export default function Hero() {
             <img
               src="https://media.licdn.com/dms/image/v2/D5622AQEdgfhPZmauMg/feedshare-shrink_800/feedshare-shrink_800/0/1730715171389?e=2147483647&v=beta&t=psHbVss_17HWweohMSs1IVnLnFWiO6tZQcHVGIEq-dw"
               alt="Luminar Technolab"
-              className="mx-5 img-fluid w-100 h-100 object-fit-cover"
-              style={{ maxHeight: "600px",maxWidth:'500px' }}
+              className="img-fluid w-100 object-fit-cover"
+              style={{height:"auto" }}
             />
           </div>
 

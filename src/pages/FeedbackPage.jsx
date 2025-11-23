@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddFeedback() {
 
-  const navigate =useNavigate()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: "",
     course: "",
@@ -23,11 +23,11 @@ export default function AddFeedback() {
   //submitting feedback if its done updating the feedback 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if(!formData.name.trim() || !formData.course.trim() ||!formData.rating.trim() ||!formData.message.trim())
-      { Swal.fire({
-        icon:"warning",
-        title:"Fill all the fields so you can Submit the form",
-        text:"Please complete the form before submitting"
+    if (!formData.name.trim() || !formData.course.trim() || !formData.rating.trim() || !formData.message.trim()) {
+      Swal.fire({
+        icon: "warning",
+        title: "Fill all the fields so you can Submit the form",
+        text: "Please complete the form before submitting"
       })
       return
     }
@@ -51,18 +51,20 @@ export default function AddFeedback() {
       }
     }
 
-   
-      const addresponse = await addFeedbackAPI({ ...formData, owner: currentUser })
-      // console.log(response.status); checking status to use conditional statement
-      if (addresponse.status == 201 || addresponse.status == 200) {
-        Swal.fire({
-          title: "Good job!",
-          text: "You successfully updated the feedback!",
-          icon: "success",
-        });
-        setFormData({ name: "", course: "", rating: "", message: "" })
-      }
-    
+
+    const addresponse = await addFeedbackAPI({ ...formData, owner: currentUser })
+    // console.log(response.status); checking status to use conditional statement
+    if (addresponse.status == 201 || addresponse.status == 200) {
+      Swal.fire({
+        title: "Good job!",
+        text: "You successfully updated the feedback!",
+        icon: "success",
+      });
+      setFormData({ name: "", course: "", rating: "", message: "" })
+      navigate('/view-feedback')
+      return;
+    }
+
   }
 
 
@@ -101,16 +103,24 @@ export default function AddFeedback() {
                 <label className="form-label fw-semibold">
                   Course / Batch
                 </label>
-                <input
-                  type="text"
+
+                <select
                   name="course"
-                  className="form-control"
-                  placeholder="Eg: MERN Stack, Python, Data Science"
+                  className="form-select"
                   value={formData.course}
                   onChange={e => setFormData({ ...formData, course: e.target.value })}
-                  required
-                />
+                  required >
+                  <option value="">Choose your course...</option>
+                  <option value="MERN Stack">MERN Stack</option>
+                  <option value="Python Full Stack">Python Full Stack</option>
+                  <option value="Data Science">Data Science</option>
+                  <option value="Flutter">Flutter</option>
+                  <option value="UI/UX Designing">UI/UX Designing</option>
+                  <option value="Java Full Stack">Java Full Stack</option>
+                  <option value="AI & ML">AI & ML</option>
+                </select>
               </div>
+
 
               {/* RATING */}
               <div className="mb-3">

@@ -19,6 +19,7 @@ function ViewFeedback() {
     setEditData(item)
   }
 
+
   // handle Update
   const handleUpdate = async () => {
     const response = await updateFeedbackAPI(editData.id, editData)
@@ -104,7 +105,7 @@ function ViewFeedback() {
 
                 {/* Edit Icon */}
           {
-            data.name ==currentUser&&
+            !isAdmin && data.name ==currentUser&&
                   <i onClick={() => handleEdit(data)}
                   className="bi bi-pencil-square text-warning fs-5 position-absolute top-0 end-0 m-3 me-5 cursor-pointer"
                 ></i>
